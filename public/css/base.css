@@ -4,7 +4,6 @@ body {
   font-size: 15px;
   line-height: 1.7;
   margin: 0;
-  padding: 30px;
 }
 
 a {
@@ -28,7 +27,6 @@ code {
 
 h1, h2, h3, h4 {
   font-weight: bold;
-  margin: 0 0 15px;
   padding: 0;
 }
 
@@ -59,4 +57,45 @@ p, ul {
 
 ul {
   padding-left: 30px;
+}
+
+#players, #questions {
+  float: left;
+  padding: 2%;
+}
+
+#players {
+  background-color: #D1EEEE;
+  width: 15%;
+}
+
+#questions {
+  width: 77%;
+}
+
+#header {
+  height: 40px;
+  background-color: #D1EEEE;
+  color: white;
+  text-shadow: black 0px 1px 0px;
+  font-size: 1.3em;
+  line-height: 40px;
+  padding-left: 10px;
+}
+
+#content {
+  position: absolute;
+  top: 40px;
+  bottom: 30px;
+  width: 100%;
+  z-index: -1;
+  background-color: #B4CDCD;
+}
+
+#footer {
+    height: 30px;
+    background-color: #D1EEEE;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }

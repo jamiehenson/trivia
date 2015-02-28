@@ -27,7 +27,6 @@ var PlayerBox = React.createClass({displayName: "PlayerBox",
   render: function() {
     return (
       React.createElement("div", {className: "playerBox"}, 
-        React.createElement("h1", null, "Players"), 
         React.createElement(PlayerList, {data: this.state.data}), 
         React.createElement(PlayerForm, {onPlayerSubmit: this.handlePlayerSubmit})
       )
