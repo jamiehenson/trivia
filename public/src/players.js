@@ -1,5 +1,3 @@
-var converter = new Showdown.converter();
-
 var PlayerBox = React.createClass({displayName: "PlayerBox",
   getInitialState: function() {
     return {data: []};
