@@ -7,6 +7,7 @@ var QuestionBox = React.createClass({
       dataType: 'json',
       success: function(data) {
         this.setState({data: data});
+        console.log(data.query.random.title)
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
@@ -15,7 +16,7 @@ var QuestionBox = React.createClass({
   },
   render: function() {
     return (
-      <h3>{this.state.data}</h3>
+      <h3>DOG</h3>
     );
   }
 });

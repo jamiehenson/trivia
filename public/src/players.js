@@ -40,7 +40,7 @@ var PlayerList = React.createClass({displayName: "PlayerList",
       );
     });
     return (
-      React.createElement("table", {className: "playerList"}, 
+      React.createElement("table", {className: "playerList table table-striped"}, 
         playerNodes
       )
     );

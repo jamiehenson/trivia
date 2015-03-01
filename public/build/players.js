@@ -40,7 +40,7 @@ var PlayerList = React.createClass({
       );
     });
     return (
-      <table className="playerList">
+      <table className="playerList table table-striped">
         {playerNodes}
       </table>
     );
