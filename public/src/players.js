@@ -24,7 +24,7 @@ var PlayerBox = React.createClass({displayName: "PlayerBox",
   },
   render: function() {
     return (
-      React.createElement("div", {className: "playerBox"}, 
+      React.createElement("div", {className: "players"}, 
         React.createElement(PlayerList, {data: this.state.data}), 
         React.createElement(PlayerForm, {onPlayerSubmit: this.handlePlayerSubmit})
       )
@@ -84,8 +84,3 @@ var Player = React.createClass({displayName: "Player",
     );
   }
 });
-
-React.render(
-  React.createElement(PlayerBox, {url: "players.json"}),
-  document.getElementById('players')
-);

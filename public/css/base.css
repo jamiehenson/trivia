@@ -59,19 +59,20 @@ ul {
   padding-left: 30px;
 }
 
-#players, #questions {
+.players, .questions {
   padding: 1%;
   position: absolute;
   top: 40px;
   bottom: 20px;
 }
 
-#players {
+.players {
   background-color: #D1EEEE;
   width: 18%;
 }
 
-#questions {
+.questions {
+  background-color: #B4CDCD;
   width: 82%;
   left: 18%;
 }
@@ -98,12 +99,9 @@ ul {
 }
 
 #content {
-  position: absolute;
   top: 40px;
   bottom: 20px;
   width: 100%;
-  z-index: -1;
-  background-color: #B4CDCD;
 }
 
 #clock {

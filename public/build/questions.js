@@ -1,4 +1,4 @@
-var Question = React.createClass({
+var QuestionBox = React.createClass({
   getInitialState: function() {
     return {data: null};
   },
@@ -28,7 +28,7 @@ var Question = React.createClass({
     }
     else {
       return (
-        <div className="question">
+        <div className="questions">
           {this.state.data.categories.people[this.state.qval]}
           <QuestionButtons onButtonPress={this.nextQuestion} />
         </div>
@@ -51,8 +51,3 @@ var QuestionButtons = React.createClass({
     );
   }
 });
-
-React.render(
-  <Question url="questions.json" />,
-  document.getElementById('questions')
-);

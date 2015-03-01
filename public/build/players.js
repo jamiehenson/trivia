@@ -24,7 +24,7 @@ var PlayerBox = React.createClass({
   },
   render: function() {
     return (
-      <div className="playerBox">
+      <div className="players">
         <PlayerList data={this.state.data} />
         <PlayerForm onPlayerSubmit={this.handlePlayerSubmit} />
       </div>
@@ -84,8 +84,3 @@ var Player = React.createClass({
     );
   }
 });
-
-React.render(
-  <PlayerBox url="players.json" />,
-  document.getElementById('players')
-);

@@ -1,4 +1,4 @@
-var Question = React.createClass({displayName: "Question",
+var QuestionBox = React.createClass({displayName: "QuestionBox",
   getInitialState: function() {
     return {data: null};
   },
@@ -28,7 +28,7 @@ var Question = React.createClass({displayName: "Question",
     }
     else {
       return (
-        React.createElement("div", {className: "question"}, 
+        React.createElement("div", {className: "questions"}, 
           this.state.data.categories.people[this.state.qval], 
           React.createElement(QuestionButtons, {onButtonPress: this.nextQuestion})
         )
@@ -51,8 +51,3 @@ var QuestionButtons = React.createClass({displayName: "QuestionButtons",
     );
   }
 });
-
-React.render(
-  React.createElement(Question, {url: "questions.json"}),
-  document.getElementById('questions')
-);
