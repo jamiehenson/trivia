@@ -20,13 +20,6 @@ app.use('/', express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.get('/players.json', function(req, res) {
-  fs.readFile('players.json', function(err, data) {
-    res.setHeader('Content-Type', 'application/json');
-    res.send(data);
-  });
-});
-
 app.get('/questions.json', function(req, res) {
   fs.readFile('questions.json', function(err, data) {
     res.setHeader('Content-Type', 'application/json');

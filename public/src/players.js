@@ -2,21 +2,6 @@ var PlayerBox = React.createClass({displayName: "PlayerBox",
   getInitialState: function() {
     return {data: []};
   },
-  loadPlayersFromServer: function() {
-    $.ajax({
-      url: this.props.url,
-      dataType: 'json',
-      success: function(data) {
-        this.setState({data: data});
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
-  },
-  componentDidMount: function() {
-    this.loadPlayersFromServer();
-  },
   handlePlayerSubmit: function(player) {
     var players = this.state.data;
     var newPlayers = players.concat([player]);
