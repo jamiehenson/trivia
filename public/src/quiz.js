@@ -2,7 +2,7 @@ var Quiz = React.createClass({displayName: "Quiz",
   render: function() {
     return(
       React.createElement("div", {className: "quizwrap"}, 
-        React.createElement(PlayerBox, {url: "players.json"}), 
+        React.createElement(PlayerBox, null), 
         React.createElement(QuestionBox, {url: "questions.json"})
       )
     );

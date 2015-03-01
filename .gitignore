@@ -31,3 +31,4 @@ config/secrets.yml
 bower.json
 
 public/src/
+node_modules
