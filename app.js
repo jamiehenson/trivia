@@ -27,14 +27,10 @@ app.get('/players.json', function(req, res) {
   });
 });
 
-app.post('/players.json', function(req, res) {
-  fs.readFile('players.json', function(err, data) {
-    var players = JSON.parse(data);
-    players.push(req.body);
-    fs.writeFile('players.json', JSON.stringify(players, null, 4), function(err) {
-      res.setHeader('Content-Type', 'application/json');
-      res.send(JSON.stringify(players));
-    });
+app.get('/questions.json', function(req, res) {
+  fs.readFile('questions.json', function(err, data) {
+    res.setHeader('Content-Type', 'application/json');
+    res.send(data);
   });
 });
 

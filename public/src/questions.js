@@ -1,27 +1,58 @@
-var wikiRandom = "http://en.wikipedia.org/w/api.php?action=query&list=random&rnlimit=1"
-
-var QuestionBox = React.createClass({displayName: "QuestionBox",
-  loadQuestion: function() {
+var Question = React.createClass({displayName: "Question",
+  getInitialState: function() {
+    return {data: null};
+  },
+  loadQuestionsFromServer: function() {
     $.ajax({
-      url: wikiRandom,
+      url: this.props.url,
       dataType: 'json',
       success: function(data) {
         this.setState({data: data});
-        console.log(data.query.random.title)
+        this.nextQuestion();
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
   },
+  componentDidMount: function() {
+    this.loadQuestionsFromServer();
+  },
+  nextQuestion: function() {
+    var questionVal = Math.floor(0 + Math.random() * this.state.data.categories.people.length)
+    this.setState({qval: questionVal});
+  },
+  render: function() {
+    if (!this.state.data) {
+      return React.createElement("div", null, "Loading...");
+    }
+    else {
+      return (
+        React.createElement("div", {className: "question"}, 
+          this.state.data.categories.people[this.state.qval], 
+          React.createElement(QuestionButtons, {onButtonPress: this.nextQuestion})
+        )
+      );
+    }
+  }
+});
+
+var QuestionButtons = React.createClass({displayName: "QuestionButtons",
+  handlePress: function() {
+    this.props.onButtonPress();
+  },
   render: function() {
     return (
-      React.createElement("h3", null, "DOG")
+      React.createElement("div", {className: "skip"}, 
+        React.createElement("button", {type: "button", className: "btn btn-default btn-sm", onClick: this.handlePress}, 
+          React.createElement("span", {className: "glyphicon glyphicon-star", "aria-hidden": "true"}), " Skip"
+        )
+      )
     );
   }
 });
 
 React.render(
-  React.createElement(QuestionBox, null),
+  React.createElement(Question, {url: "questions.json"}),
   document.getElementById('questions')
 );

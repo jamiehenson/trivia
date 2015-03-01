@@ -1,0 +1,16 @@
+{
+  "categories":
+  {
+    "people": 
+    [
+      "Johnny Marr",
+      "Winston Churchill",
+      "Jason Statham"
+    ],
+    "places": 
+    [
+      "Russia",
+      "San Francisco"
+    ]
+  }
+}
