@@ -21,7 +21,7 @@ var PlayerList = React.createClass({
   render: function() {
     var playerNodes = this.props.data.map(function (player) {
       return (
-        <Player player={player.player} score={player.score} />
+        <Player name={player.name} score={player.score} colour={player.colour}/>
       );
     });
     return (
@@ -32,20 +32,31 @@ var PlayerList = React.createClass({
   }
 });
 
+var Colours = [
+  "red",
+  "cyan",
+  "green",
+  "white",
+  "magenta",
+  "yellow",
+  "grey"
+]
+
 var PlayerForm = React.createClass({
   handleSubmit: function(e) {
     e.preventDefault();
-    var player = this.refs.player.getDOMNode().value.trim();
-    if (!player) {
+    var name = this.refs.name.getDOMNode().value.trim();
+    if (!name) {
       return;
     }
-    this.props.onPlayerSubmit({player: player, score: 0});
-    this.refs.player.getDOMNode().value = '';
+    console.log($('#playerTable tr').length);
+    this.props.onPlayerSubmit({name: name, score: 0, colour: Colours[$('.playerList tr').length]});
+    this.refs.name.getDOMNode().value = '';
   },
   render: function() {
     return (
       <form className="playerForm" onSubmit={this.handleSubmit}>
-        <input type="text" placeholder="Name" ref="player" />
+        <input type="text" placeholder="Name" ref="name" />
         <input type="submit" value="Post" />
       </form>
     );
@@ -54,10 +65,14 @@ var PlayerForm = React.createClass({
 
 var Player = React.createClass({
   render: function() {
+    var playerStyle = {
+      backgroundColor: this.props.colour
+    };
+
     return (
-      <tr className="player">
-        <td className="playerplayer">
-          {this.props.player}
+      <tr className="playerRow" style={playerStyle}>
+        <td className="playerName">
+          {this.props.name}
         </td>
         <td className="playerScore">
           {this.props.score}

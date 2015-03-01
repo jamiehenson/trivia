@@ -21,7 +21,7 @@ var PlayerList = React.createClass({displayName: "PlayerList",
   render: function() {
     var playerNodes = this.props.data.map(function (player) {
       return (
-        React.createElement(Player, {player: player.player, score: player.score})
+        React.createElement(Player, {name: player.name, score: player.score, colour: player.colour})
       );
     });
     return (
@@ -32,20 +32,31 @@ var PlayerList = React.createClass({displayName: "PlayerList",
   }
 });
 
+var Colours = [
+  "red",
+  "cyan",
+  "green",
+  "white",
+  "magenta",
+  "yellow",
+  "grey"
+]
+
 var PlayerForm = React.createClass({displayName: "PlayerForm",
   handleSubmit: function(e) {
     e.preventDefault();
-    var player = this.refs.player.getDOMNode().value.trim();
-    if (!player) {
+    var name = this.refs.name.getDOMNode().value.trim();
+    if (!name) {
       return;
     }
-    this.props.onPlayerSubmit({player: player, score: 0});
-    this.refs.player.getDOMNode().value = '';
+    console.log($('#playerTable tr').length);
+    this.props.onPlayerSubmit({name: name, score: 0, colour: Colours[$('.playerList tr').length]});
+    this.refs.name.getDOMNode().value = '';
   },
   render: function() {
     return (
       React.createElement("form", {className: "playerForm", onSubmit: this.handleSubmit}, 
-        React.createElement("input", {type: "text", placeholder: "Name", ref: "player"}), 
+        React.createElement("input", {type: "text", placeholder: "Name", ref: "name"}), 
         React.createElement("input", {type: "submit", value: "Post"})
       )
     );
@@ -54,10 +65,14 @@ var PlayerForm = React.createClass({displayName: "PlayerForm",
 
 var Player = React.createClass({displayName: "Player",
   render: function() {
+    var playerStyle = {
+      backgroundColor: this.props.colour
+    };
+
     return (
-      React.createElement("tr", {className: "player"}, 
-        React.createElement("td", {className: "playerplayer"}, 
-          this.props.player
+      React.createElement("tr", {className: "playerRow", style: playerStyle}, 
+        React.createElement("td", {className: "playerName"}, 
+          this.props.name
         ), 
         React.createElement("td", {className: "playerScore"}, 
           this.props.score
